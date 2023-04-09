@@ -13,20 +13,24 @@ function next(id, opt) {
     }
 }
 document.addEventListener("keydown", function(event) {
+    id = parseFloat(document.getElementById(document.activeElement.getAttribute('id')).id)
     if (event.key == "Backspace") {
-        focused = document.activeElement
-        if (focused) {
-            focused.value = ''
-            document.getElementById(focused.getAttribute('id')-1).focus()
-            event.preventDefault()
+        document.getElementById(id).value = ''
+        document.getElementById(id-1).focus()
+        event.preventDefault()
+    } else if (event.key == 'ArrowLeft') {
+        console.log(document.getElementById(id-1), id-1)
+        document.getElementById(id-1).focus()
+        console.log('ArrowLeft')
+    } else if (event.key == 'ArrowRight') {
+        console.log(document.getElementById(id+1), id+1)
+        document.getElementById(id+1).focus()
+        console.log('ArrowRight')
+    } else {
+        if (document.getElementById(id).value != '') {
+            document.getElementById(id+1).focus()
         }
     }
-})
-inputs = document.querySelectorAll("input")
-inputs.forEach(function(input) {
-    input.addEventListener("focus", function() {
-        this.select()
-    })
 })
 function check(id) {
     id = id-5
