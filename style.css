@@ -1,0 +1,104 @@
+@import url(https://fonts.bunny.net/css?family=albert-sans:300);
+:root {
+    --primary: #202020;
+    --secondary: #606060;
+    --foreground: #fff;
+}
+html * {
+    font-family: 'Albert Sans', sans-serif;
+}
+body {
+    background-color: var(--primary);
+}
+input {
+    width: 30px;
+    height: 30px;   
+    margin: 5px;
+    border: 2px solid var(--secondary);
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: var(--primary);
+    color: var(--foreground);
+    user-select: none;
+    outline: none;
+}
+input:focus {
+    border-color: #fff;
+}
+.row {
+    display: flex;
+}
+.c {
+    background-color: #55a855 !important;
+}
+.p {
+    background-color: #ebbc3c !important;
+}
+.i {
+    background-color: #b43d3d !important;
+}
+.shake {
+    animation: shake normal 300ms linear;
+    animation-play-state: running;
+}
+@keyframes shake {
+    0% {
+        border-color: #b43d3d;
+        rotate: 0deg;
+    }
+    25% {
+        rotate: -5deg;
+    }
+    50% {
+        rotate: 5deg;
+    }
+    100% {
+        border-color: #b43d3d;
+        rotate: 0deg;
+    }
+}
+#game {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#gg  {
+    color: var(--foreground);
+    font-size: 48px;
+    text-align: center;
+    letter-spacing: 5px;
+    display: none;
+}@import url(https://fonts.bunny.net/css?family=albert-sans:300);
+.key {
+    padding: 5px;
+    background-color: var(--primary);
+    border: 2px solid var(--secondary);
+    margin: 5px;
+    height: 30px;
+    width: 30px;
+    color: var(--foreground);
+    border-radius: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 28px;
+}
+#keyboard {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.y {
+    background-color: var(--foreground);
+    color: var(--primary);
+}
+.n {
+    background-color: var(--secondary);
+}
