@@ -46,7 +46,7 @@ function check(id) {
     input += document.getElementById(id+3).value
     input += document.getElementById(id+4).value
     if (input.length == 5) {
-        if (words.includes(input.toLowerCase())) {
+        if (words.includes(input.toLowerCase()) || possibilities.includes(input.toLowerCase())) {
             letter(id, 0)
             letter(id+1, 1)
             letter(id+2, 2)
@@ -57,11 +57,12 @@ function check(id) {
             }
             if (input == word) {
                 document.getElementById('gg').style.display = 'block'
-                definition()
+                document.getElementById('definition').innerHTML = 'definition: ' + definition
             } else {
                 if (id == 25) {
                     document.getElementById('lost').style.display = 'block'
-                    definition()
+                    document.getElementById('word').innerHTML = 'word: ' + word
+                    document.getElementById('definition').innerHTML = 'definition: ' + definition
                 }
             }
         } else {
@@ -72,19 +73,6 @@ function check(id) {
             shake(id+4)
         }
     }
-}
-function definition() {
-    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
-        .then(response => response.json())
-        .then(data => {
-            try {
-                definition = data[0].meanings[0].definitions[0].definition;
-            } catch (error) {
-            definition = 'No definition found'
-        }
-        document.getElementById('word').innerHTML = 'word: ' + word
-        document.getElementById('definition').innerHTML = 'definition: ' + definition
-    })
 }
 function letter(id, pos) {
     if (document.getElementById(id).value == word[pos]) {
@@ -123,6 +111,22 @@ function shake(id) {
 }
 clear()
 document.getElementById('0').focus()
-word = words[Math.floor(Math.random() * words.length)]
-console.log(word)
-word.split('')
+async function start() {
+    found = false
+    while (!found) {
+        word = possibilities[Math.floor(Math.random() * possibilities.length)]
+        await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+        .then(response => response.json())
+        .then(data => {
+            try {
+                definition = data[0].meanings[0].definitions[0].definition;
+                if (definition.length > 0) {
+                    found = true
+                }
+            } catch (error) {}
+        })
+        console.log(word)
+        word.split('')
+    }
+}
+start()
