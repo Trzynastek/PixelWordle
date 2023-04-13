@@ -8,48 +8,51 @@
 <body>
     <div id="game">
         <p id="gg">GG!</p>
+        <p id="lost">You lose!</p>
+        <p id="word"></p>
+        <p id="definition"></p>
         <div id="inputs">
             <div id="r1" class="row">
                 <input type="text" maxlength="1" oninput="next(1)" id="0">
                 <input type="text" maxlength="1" oninput="next(2)" id="1">
                 <input type="text" maxlength="1" oninput="next(3)" id="2">
                 <input type="text" maxlength="1" oninput="next(4)" id="3">
-                <input type="text" maxlength="1" oninput="next(5, 'check')" id="4">
+                <input type="text" maxlength="1" oninput="next(5)" id="4">
             </div>
             <div id="r2" class="row">
                 <input type="text" maxlength="1" oninput="next(6)" id="5" disabled>
                 <input type="text" maxlength="1" oninput="next(7)" id="6" disabled>
                 <input type="text" maxlength="1" oninput="next(8)" id="7" disabled>
                 <input type="text" maxlength="1" oninput="next(9)" id="8" disabled>
-                <input type="text" maxlength="1" oninput="next(10, 'check')" id="9" disabled>
+                <input type="text" maxlength="1" oninput="next(10)" id="9" disabled>
             </div>
             <div id="r3" class="row">
                 <input type="text" maxlength="1" oninput="next(11)" id="10" disabled>
                 <input type="text" maxlength="1" oninput="next(12)" id="11" disabled>
                 <input type="text" maxlength="1" oninput="next(13)" id="12" disabled>
                 <input type="text" maxlength="1" oninput="next(14)" id="13" disabled>
-                <input type="text" maxlength="1" oninput="next(15, 'check')" id="14" disabled>
+                <input type="text" maxlength="1" oninput="next(15)" id="14" disabled>
             </div>
             <div id="r4" class="row">
                 <input type="text" maxlength="1" oninput="next(16)" id="15" disabled>
                 <input type="text" maxlength="1" oninput="next(17)" id="16" disabled>
                 <input type="text" maxlength="1" oninput="next(18)" id="17" disabled>
                 <input type="text" maxlength="1" oninput="next(19)" id="18" disabled>
-                <input type="text" maxlength="1" oninput="next(20, 'check')" id="19" disabled>
+                <input type="text" maxlength="1" oninput="next(20)" id="19" disabled>
             </div>
             <div id="r5" class="row">
                 <input type="text" maxlength="1" oninput="next(21)" id="20" disabled>
                 <input type="text" maxlength="1" oninput="next(22)" id="21" disabled>
                 <input type="text" maxlength="1" oninput="next(23)" id="22" disabled>
                 <input type="text" maxlength="1" oninput="next(24)" id="23" disabled>
-                <input type="text" maxlength="1" oninput="next(25, 'check')" id="24" disabled>
+                <input type="text" maxlength="1" oninput="next(25)" id="24" disabled>
             </div>
             <div id="r6" class="row">
                 <input type="text" maxlength="1" oninput="next(26)" id="25" disabled>
                 <input type="text" maxlength="1" oninput="next(27)" id="26" disabled>
                 <input type="text" maxlength="1" oninput="next(28)" id="27" disabled>
                 <input type="text" maxlength="1" oninput="next(29)" id="28" disabled>
-                <input type="text" maxlength="1" oninput="next(30, 'check')"id="29" disabled>
+                <input type="text" maxlength="1" oninput="next(30)"id="29" disabled>
             </div>
         </div>
         <div id="keyboard">

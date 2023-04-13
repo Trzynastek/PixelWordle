@@ -1,5 +1,5 @@
-function next(id, opt) {
-    if (document.getElementById(id-1).value.length = 0) {
+function next(id) {
+    if (document.getElementById(id-1).value.length == 0) {
         if (document.getElementById(id-1)) {
             document.getElementById(id-1).focus()
         }
@@ -8,8 +8,18 @@ function next(id, opt) {
             document.getElementById(id).focus()
         }
     }
-    if (opt == 'check') {
-        check(id)
+    if (id <= 5) {
+        check(5)
+    } else if (id > 5 && id <= 10) {
+        check(10)
+    }else if (id > 10 && id <= 15) {
+        check(15)
+    }else if (id > 15 && id <= 20) {
+        check(20)
+    }else if (id > 20 && id <= 25) {
+        check(25)
+    }else if (id > 25 && id <= 30) {
+        check(30)
     }
 }
 document.addEventListener("keydown", function(event) {
@@ -19,13 +29,9 @@ document.addEventListener("keydown", function(event) {
         document.getElementById(id-1).focus()
         event.preventDefault()
     } else if (event.key == 'ArrowLeft') {
-        console.log(document.getElementById(id-1), id-1)
         document.getElementById(id-1).focus()
-        console.log('ArrowLeft')
     } else if (event.key == 'ArrowRight') {
-        console.log(document.getElementById(id+1), id+1)
         document.getElementById(id+1).focus()
-        console.log('ArrowRight')
     } else {
         if (document.getElementById(id).value != '') {
             document.getElementById(id+1).focus()
@@ -39,24 +45,41 @@ function check(id) {
     input += document.getElementById(id+2).value
     input += document.getElementById(id+3).value
     input += document.getElementById(id+4).value
-    if (words.includes(input.toLowerCase())) {
-        letter(id, 0)
-        letter(id+1, 1)
-        letter(id+2, 2)
-        letter(id+3, 3)
-        letter(id+4, 4)
-        if (document.getElementById(id+5)) {
-            document.getElementById(id+5).focus()
+    if (input.length == 5) {
+        if (words.includes(input.toLowerCase())) {
+            letter(id, 0)
+            letter(id+1, 1)
+            letter(id+2, 2)
+            letter(id+3, 3)
+            letter(id+4, 4)
+            if (document.getElementById(id+5)) {
+                document.getElementById(id+5).focus()
+            }
+            if (input == word) {
+                document.getElementById('gg').style.display = 'block'
+            } else {
+                if (id == 25) {
+                    document.getElementById('lost').style.display = 'block'
+                    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        try {
+                            definition = data[0].meanings[0].definitions[0].definition;
+                        } catch (error) {
+                            definition = 'No definition found'
+                        }
+                        document.getElementById('word').innerHTML = 'word: ' + word
+                        document.getElementById('definition').innerHTML = 'definition: ' + definition
+                    })
+                }
+            }
+        } else {
+            shake(id)
+            shake(id+1)
+            shake(id+2)
+            shake(id+3)
+            shake(id+4)
         }
-        if (input == word) {
-            document.getElementById('gg').style.display = 'block'
-        }
-    } else {
-        shake(id, 0)
-        shake(id+1, 1)
-        shake(id+2, 2)
-        shake(id+3, 3)
-        shake(id+4, 4)
     }
 }
 function letter(id, pos) {
